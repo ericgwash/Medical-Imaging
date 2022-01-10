@@ -1,0 +1,281 @@
+\documentclass[10pt]{article}\usepackage[]{graphicx}\usepackage[]{color}
+% maxwidth is the original width if it is less than linewidth
+% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+\let\hlipl\hlkwb
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsfonts,amsmath,amssymb}
+\usepackage[none]{hyphenat}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{soul}
+\parindent 0ex
+\usepackage{times}
+\usepackage{url}
+\setlength{\parskip}{1em}
+\usepackage{listings}
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\begin{document}
+
+
+\begin{titlepage}
+\begin{center}
+\vspace*{1cm}
+\Huge{\textbf{\ul{ UNIVERSITY  OF  NAIROBI}}}\\
+\vfill
+STA 322:COMPUTATIONAL METHODS AND DATA ANALYSIS III
+\vfill
+SUBJECT : GROUP 17 
+ \vfill
+017- Medical Imaging.pdf
+\vfill
+\Large{\textbf{MEMBERS}}\\
+
+\Large{\textbf{ERIC CHERUIYOT I07/81378/2017}}\\
+\vfill
+\end{center}
+\end{titlepage}
+\begin{center}
+\section*{\Large{\textbf{\ul{WORKING WITH DICOM DATA INPUT/OUTPUT IN R}}}}
+\end{center}
+
+\subsection*{\textbf{Authors}}
+Eric Cheruiyot
+\subsection*{Abstract}
+
+The oro.dicom package allows input and output of data that adapts to the Digital
+Imaging and Communications in Medicine (DICOM) standard. The DICOM list
+organization is used to produce a multi-dimensional array representing a single
+acquisition of medical imaging data. The oro.nifti package facilitates the input/output
+and visualization of medical imaging data. It uses the ANALYZE or NIFTI format.
+tractor.base (part of the tractor project)package is made up of functions which are
+used for reading,writing and visualization of MRI images. The images might have
+been stored up in the DICOM or ANALYZE format.It also provides functions for
+image manipulation and for applying arbitrary functions to image data.
+
+
+Keywords: imaging, medical, visualization, input and output.
+
+
+\subsection*{Introduction}
+Medical imaging is a procedure of generating visual images of the internal parts of the
+body for purposes of diagnosis and treatment. It is well used in clinical and research
+areas.\par Digital Imaging and Communications in Medicine (DICOM) is typical medical
+imaging bundle for loading, printing and transferring information in medical imaging.
+It was created by the National Electrical Manufacturers Association (NEMA)
+(W.H.O, 2010). The DICOM was established from previous standards and released in
+1993. It is used for data presentation for clinical imaging equipment and a range of
+other modalities. Different manufactures have diverse DICOM conformance
+statements which dictates how their hardware portrays(whitcher,2014).\par The DICOM have been developed to provide the industry standard format for data
+coming off clinical imaging devices. Nevertheless, additional data formats have been
+established over the years to aid in data analysis and image processing. The
+ANALYZE format developed together with an imaging processing system by Mayo
+Foundation (Murino, 2014). \par This paper present a method of interacting with DICOM files using R. It uses real
+data sets to demonstrate the basic practicality of oro.dicom which is one of the
+CRAN packages. It should be noted that the package focuses on functions for data
+input/output and visualization. \par Lately, the Data Format Working Group from Neuroimaging Information Technology
+Initiative (NIfTI) adapted NIfTI-1which is almost identical to ANALYZE Format.
+Images in the. DICOM format may be changed to NIfTI using oro.nifti by extracting
+information from the DICOM files (eloyan,2014).
+\vfill
+\subsection*{1.Data input/output in R}
+The oro.dicom package facilitates input of Digitial Imaging and Communications in
+Medicine (DICOM) files in R. Use readDICOMFile () to access information stored in
+a single DICOM file storage.\subsubsection*{\ul{RESULTS}
+
+
+
+
+
+\begin{center}
+\includegraphics[scale=0.8]{Annotation 2020-03-02 135520.png}
+
+\end{center}
+
+
+
+
+The first five tag in the DICOM header of xr\_chest.dcm are:
+GroupLength,FileMetaInformationVersion,MediaStorageSOPClassIUD,
+MediaStorageSOPInstanceUID,TransferSyntaxUID and
+ImplementationClassUID.The last five tags in the DICOM header are:
+WindowWIdth,RescaleIntercept,RescaleSlope,RescaleType,Unknown and PixelData.
+The numbers of bytes involved are 10219520 bytes which are shown by the very last
+tag(Tabelow at el,2011). Additional information in the rest of the tags are
+questioned(via extractHeader).
+
+BitsAllocated
+[1] 16
+
+Number of Rows
+[1] 2048
+
+Number of Columns
+[1] 2495
+
+The data is consistent with the header information in regards to the number of
+bytes(2048*2495*(16/8)=10219520).
+
+Multiple DICOM files may be located in a single directory or spread out within
+multiple directories. One may opt to use the function readDicom (applied to the
+directory hk=40) to read the files.
+\begin{center}
+\includegraphics[scale=0.8]{Rplot.png}
+
+\end{center}
+\textit{Figure :DICOM image of the chest.}
+
+
+
+
+Manufacturer
+[1] "AGFA"
+
+
+Repetition Time
+[1] NA
+
+
+Echo Time
+[1] NA
+
+\begin{center}
+\includegraphics[scale=0.8]{Rplot01.png}
+
+\end{center}
+
+\subsection*{2.Dicom image.}
+
+Dicom files involve a single slice from an image. The package oro.dicom assumes
+images are stored as two-bytes integers without compression.
+
+Figure 1 shows the MRI of the chest. Information contained in the original data
+should accompany the DICOM image through the header and can be extracted using
+the package oro.dicom which simplifies the manipulation of data.
+\begin{center}
+\includegraphics[scale=0.8]{Annotation 2020-03-02 140840.png}
+\end{center}
+\textit{Figure} :DICOM image of the chest
+
+Manufacturer
+[1] "AGFA"
+
+
+Repetition Time
+[1] NA
+
+
+Echo Time
+[1] NA
+\subsubsection*{3.Converting DICOM to NIfTI}
+The packages oro.dicom and oro.nifti are used to extract as much information as
+possible from a DICOM image. To convert a DICOM image to nifti we use the
+function dicom2nifti. The function dicom2analyze coverts a DICOM list to analyze
+format(Thompson at el, 2014).
+Using a single series data set from the 40 images of hk40 we can perform DICOMNIfTI
+conversion.
+RESULTS.
+
+\begin{center}
+\includegraphics[scale=0.8]{Annotation 2020-03-02 140537.png}
+
+
+\end{center}
+
+
+\begin{center}
+\includegraphics[scale=0.8]{Rplot02.png}
+
+
+\end{center}
+\textit{Figure:Three dimensional array of images }
+
+dicom2nifti creates a 3D image from the DICOM list.dicom2nifti and dicom2analyze functions fail when the dimensions of individual images in the DICOM list do not match.
+\begin{center}
+\section*{Conclusion}
+\end{center}
+Medical image analysis mainly relies on the productiveness of handling and transmuting DICOM data.\par Eventually, medical image analysis in R will be enhanced by a collective view of the imaging Data standards: DICOM, NIfTI, ANALYZE and other CRAN packages. These packages of  handling imaging data formats link up operations between the ever raising numbers of R packages design for medical image analysis. The data standard format in oro.dicom or oro.nifti are not conclusively rated as the only best for this purpose and we would like to appreciate individual's efforts in form of discussions which can aid to provide the end user the best standardization of Data in Medical imaging analysis.
+
+
+\section*{Acknowledgement}
+
+
+
+The authors of this project would like to thank our lecturer Dr. Kamanu, who inspired us and guided us with necessary information while undertaking this project. We would also like to appreciate all our fellow colleagues and the group members for their comments, suggestions and giving us a conducive environment to finishing our project in good time. Finally, we would like to convey our gratitude and appreciations to our parents for their love, care and moral support towards the writing of this project. 
+
+ 
+\begin{center}
+\section*{References}
+\end{center}
+Murino, L. M. a. L., 2014. Medical Imaging Format.\textit{Journal of Digital Imaging} , pp. 200-206. 
+	
+W.H.O, 2010.\textit{Medical Devices: Managing the mismatch: An outcome of the priority devices project} . Switzerland: World Health Organisation. 
+ 
+Whitcher, B., Schmid, V.J. and Thornton, A., 2011.\textit{Working with the DICOM and NIfTI Data Standards in R. Journal of Statistical Software} , 44(6), pp.1-28. 
+ 
+Tabelow, K., Clayden, J.D., De Micheaux, P.L., Polzehl, J., Schmid, V.J. and Whitcher, B., 2011. Image analysis and statistical inference in neuroimaging with R.\textit{NeuroImage}, 55(4), pp.1686-1693. 
+ 
+Thompson, R.F., 2014. RadOnc: an R package for analysis of dose-volume histogram and three-dimensional structural data.\textit{Journal of Radiation Oncology Informatics} , 6(1), pp.98-110. 
+ 
+Eloyan, A., Li, S., Muschelli, J., Pekar, J.J., Mostofsky, S.H. and Caffo, B.S., 2014.\textit{Analytic programming with fMRI data: A quick-start guide for statisticians using R. PloS one}, 9(2), p.e89470 
+\newpage
+\begin{center}
+\section*{\ul{APPENDIX}}
+
+\begin{center}
+\includegraphics[scale=1.2]{Annotation 2020-03-02 140205.png}
+
+\end{center}
+\end{center}
+
+
+
+ 
+\end{document}
